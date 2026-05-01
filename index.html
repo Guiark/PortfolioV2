@@ -1,645 +1,348 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DEV_PORTFOLIO — Full Throttle</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600;700&family=Share+Tech+Mono&family=Bebas+Neue&display=swap" rel="stylesheet">
-  <style>
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DEV_PORTFOLIO — Full Throttle</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600;700&family=Share+Tech+Mono&family=Bebas+Neue&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --red:#cc1111;--red-bright:#e01515;
+  --bg:#0a0a0a;--bg2:#0d0d0d;--bg3:#111;
+  --border:#1a1a1a;--border2:#222;
+  --text:#e8e8e8;--muted:#666;--dim:#444;--dimmer:#333;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Rajdhani',sans-serif;overflow-x:hidden}
 
-    :root {
-      --red: #cc1111;
-      --red-bright: #e01515;
-      --bg: #0a0a0a;
-      --bg2: #0d0d0d;
-      --bg3: #111;
-      --border: #1a1a1a;
-      --border2: #222;
-      --text: #e8e8e8;
-      --muted: #666;
-      --dim: #444;
-      --dimmer: #333;
-    }
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");pointer-events:none;z-index:9998;opacity:.5}
+body::after{content:'';position:fixed;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,.10) 2px,rgba(0,0,0,.10) 4px);pointer-events:none;z-index:9997}
 
-    html { scroll-behavior: smooth; }
+/* ── NAV ── */
+nav{display:flex;justify-content:space-between;align-items:center;padding:1.1rem 3rem;border-bottom:1px solid var(--border);background:rgba(10,10,10,.97);position:sticky;top:0;z-index:1000;backdrop-filter:blur(4px)}
+.logo{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:4px;color:#fff}
+.logo span{color:var(--red)}
+.nav-links{display:flex;gap:2.5rem}
+.nav-links a{font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--dim);text-decoration:none;letter-spacing:3px;text-transform:uppercase;transition:color .2s}
+.nav-links a:hover{color:var(--red)}
+.nav-status{display:flex;align-items:center;gap:8px;font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--dim);letter-spacing:2px}
+.dot{width:6px;height:6px;border-radius:50%;background:#22cc44;box-shadow:0 0 8px #22cc44;animation:blink 2s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
 
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: 'Rajdhani', sans-serif;
-      overflow-x: hidden;
-    }
+/* ── HERO ── */
+.hero{min-height:90vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:2rem;padding:5rem 3rem;position:relative;overflow:hidden}
+.hero::after{content:'';position:absolute;top:0;right:0;width:50%;height:100%;border-left:1px solid var(--border);background:linear-gradient(135deg,transparent 50%,rgba(204,17,17,.025));pointer-events:none}
 
-    /* ── NOISE + SCANLINES ── */
-    body::before {
-      content: '';
-      position: fixed; inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
-      pointer-events: none; z-index: 9998; opacity: .5;
-    }
-    body::after {
-      content: '';
-      position: fixed; inset: 0;
-      background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,.12) 2px, rgba(0,0,0,.12) 4px);
-      pointer-events: none; z-index: 9997;
-    }
+.hero-eyebrow{font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--red);letter-spacing:5px;text-transform:uppercase;margin-bottom:1.4rem;display:flex;align-items:center;gap:10px}
+.hero-eyebrow::before{content:'';width:28px;height:1px;background:var(--red);display:block}
 
-    /* ── NAV ── */
-    nav {
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 1.1rem 3rem;
-      border-bottom: 1px solid var(--border);
-      background: rgba(10,10,10,.97);
-      position: sticky; top: 0; z-index: 1000;
-      backdrop-filter: blur(4px);
-    }
-    .logo {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 26px; letter-spacing: 4px; color: #fff;
-    }
-    .logo span { color: var(--red); }
+h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(60px,9vw,100px);line-height:.88;letter-spacing:2px;color:#fff;margin-bottom:1.2rem}
+h1 .red{color:var(--red)}
+h1 .ghost{-webkit-text-stroke:1px #3a3a3a;color:transparent}
 
-    .nav-links { display: flex; gap: 2.5rem; }
-    .nav-links a {
-      font-family: 'Share Tech Mono', monospace;
-      font-size: 11px; color: var(--dim); text-decoration: none;
-      letter-spacing: 3px; text-transform: uppercase;
-      transition: color .2s;
-    }
-    .nav-links a:hover { color: var(--red); }
+.hero-bio{font-size:15px;color:var(--muted);line-height:1.8;max-width:400px;margin-bottom:2.2rem}
+.btns{display:flex;gap:1rem;flex-wrap:wrap}
+.btn{font-family:'Rajdhani',sans-serif;font-size:13px;font-weight:700;letter-spacing:3px;text-transform:uppercase;padding:13px 30px;cursor:pointer;clip-path:polygon(0 0,calc(100% - 10px) 0,100% 10px,100% 100%,10px 100%,0 calc(100% - 10px));transition:all .2s;text-decoration:none;display:inline-block}
+.btn-red{background:var(--red);color:#fff;border:none}
+.btn-red:hover{background:var(--red-bright);transform:translateY(-2px)}
+.btn-outline{background:transparent;color:#999;border:1px solid var(--dimmer)}
+.btn-outline:hover{border-color:var(--red);color:#fff}
 
-    .nav-status { display: flex; align-items: center; gap: 8px; font-family: 'Share Tech Mono', monospace; font-size: 10px; color: var(--dim); letter-spacing: 2px; }
-    .dot { width: 6px; height: 6px; border-radius: 50%; background: #22cc44; box-shadow: 0 0 8px #22cc44; animation: blink 2s infinite; }
-    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:.3} }
+/* ── HERO RIGHT : PANIGALE PHOTO ── */
+.hero-right{position:relative;display:flex;align-items:center;justify-content:center;z-index:1}
+.moto-wrap{position:relative;width:100%;max-width:520px}
 
-    /* ── HERO ── */
-    .hero {
-      min-height: 90vh;
-      display: grid; grid-template-columns: 1fr 1fr;
-      align-items: center; gap: 2rem;
-      padding: 5rem 3rem;
-      position: relative; overflow: hidden;
-    }
-    .hero::after {
-      content: '';
-      position: absolute; top: 0; right: 0;
-      width: 50%; height: 100%;
-      border-left: 1px solid var(--border);
-      background: linear-gradient(135deg, transparent 50%, rgba(204,17,17,.025));
-      pointer-events: none;
-    }
+.panigale-frame{
+  position:relative;
+  width:100%;
+  padding-bottom:60%;
+  overflow:hidden;
+}
+.panigale-frame img{
+  position:absolute;
+  inset:0;width:100%;height:100%;
+  object-fit:cover;
+  object-position:center 60%;
+  filter:saturate(1.15) contrast(1.05);
+  display:block;
+}
+/* fondu latéral + bas pour ancrer dans le bg sombre */
+.panigale-frame::before{
+  content:'';
+  position:absolute;inset:0;z-index:2;
+  background:
+    linear-gradient(to right, var(--bg) 0%, transparent 30%),
+    linear-gradient(to top, var(--bg) 0%, transparent 25%);
+  pointer-events:none;
+}
+/* liseré rouge en bas */
+.panigale-frame::after{
+  content:'';
+  position:absolute;bottom:0;left:0;right:0;height:2px;
+  background:var(--red);z-index:3;
+  box-shadow:0 0 12px var(--red);
+}
 
-    .hero-eyebrow {
-      font-family: 'Share Tech Mono', monospace;
-      font-size: 11px; color: var(--red);
-      letter-spacing: 5px; text-transform: uppercase;
-      margin-bottom: 1.4rem;
-      display: flex; align-items: center; gap: 10px;
-    }
-    .hero-eyebrow::before { content: ''; width: 28px; height: 1px; background: var(--red); display: block; }
+/* lueur sol */
+.moto-glow{
+  position:absolute;bottom:-8px;left:50%;transform:translateX(-50%);
+  width:70%;height:18px;
+  background:var(--red);
+  filter:blur(22px);
+  opacity:.18;
+  border-radius:50%;
+  z-index:0;
+}
 
-    h1 {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(60px, 9vw, 100px);
-      line-height: .88; letter-spacing: 2px; color: #fff;
-      margin-bottom: 1.2rem;
-    }
-    h1 .red { color: var(--red); }
-    h1 .ghost { -webkit-text-stroke: 1px #3a3a3a; color: transparent; }
+/* badge technique overlay */
+.moto-badge{
+  position:absolute;top:14px;right:0;
+  background:rgba(10,10,10,.88);
+  border:1px solid var(--border2);
+  border-left:2px solid var(--red);
+  padding:8px 14px;
+  font-family:'Share Tech Mono',monospace;
+  font-size:10px;color:#555;letter-spacing:2px;
+  z-index:4;
+  backdrop-filter:blur(4px);
+}
+.moto-badge strong{display:block;font-family:'Bebas Neue',sans-serif;font-size:18px;color:#fff;letter-spacing:2px;line-height:1.1;margin-bottom:2px}
 
-    .hero-bio {
-      font-size: 15px; color: var(--muted); line-height: 1.8;
-      max-width: 400px; margin-bottom: 2.2rem;
-    }
+.floats{position:absolute;right:-20px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:10px;z-index:4}
+.float-card{background:var(--bg2);border:1px solid var(--border2);border-left:2px solid var(--red);padding:8px 14px;font-family:'Share Tech Mono',monospace}
+.float-card .fval{font-family:'Bebas Neue',sans-serif;font-size:22px;color:#fff;letter-spacing:2px;line-height:1}
+.float-card .flbl{font-size:9px;color:#555;letter-spacing:3px}
 
-    .btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+.hero-left > *{animation:fadeUp .7s ease both}
+.hero-left > *:nth-child(1){animation-delay:.1s}
+.hero-left > *:nth-child(2){animation-delay:.25s}
+.hero-left > *:nth-child(3){animation-delay:.4s}
+.hero-left > *:nth-child(4){animation-delay:.55s}
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
 
-    .btn {
-      font-family: 'Rajdhani', sans-serif;
-      font-size: 13px; font-weight: 700;
-      letter-spacing: 3px; text-transform: uppercase;
-      padding: 13px 30px; cursor: pointer;
-      clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
-      transition: all .2s; text-decoration: none; display: inline-block;
-    }
-    .btn-red { background: var(--red); color: #fff; border: none; }
-    .btn-red:hover { background: var(--red-bright); transform: translateY(-2px); }
-    .btn-outline { background: transparent; color: #999; border: 1px solid var(--dimmer); }
-    .btn-outline:hover { border-color: var(--red); color: #fff; }
+/* ── SECTIONS ── */
+section{padding:5rem 3rem;border-top:1px solid var(--border)}
+.sec-label{font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--red);letter-spacing:5px;text-transform:uppercase;margin-bottom:.5rem}
+.sec-title{font-family:'Bebas Neue',sans-serif;font-size:44px;letter-spacing:2px;color:#fff;margin-bottom:2.5rem}
 
-    /* ── HERO RIGHT : MOTO ── */
-    .hero-right {
-      position: relative; display: flex;
-      align-items: center; justify-content: center;
-      z-index: 1;
-    }
+/* ── SKILLS ── */
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1px;background:var(--border);border:1px solid var(--border)}
+.skill-card{background:var(--bg2);padding:1.6rem 1.3rem;transition:background .2s;cursor:default}
+.skill-card:hover{background:var(--bg3)}
+.sk-icon{font-size:20px;margin-bottom:10px;display:block}
+.sk-name{font-family:'Share Tech Mono',monospace;font-size:11px;color:#aaa;letter-spacing:1px;margin-bottom:10px}
+.sk-track{height:2px;background:#1e1e1e}
+.sk-bar{height:2px;background:var(--red);position:relative}
+.sk-bar::after{content:'';position:absolute;right:0;top:-2px;width:5px;height:6px;background:var(--red);box-shadow:0 0 6px var(--red)}
 
-    .moto-wrap { position: relative; width: 100%; max-width: 480px; }
+/* ── PROJECTS ── */
+.projects-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border)}
+.proj-card{background:var(--bg2);padding:2.2rem;position:relative;overflow:hidden;cursor:pointer;transition:background .2s}
+.proj-card:hover{background:var(--bg3)}
+.proj-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--red);transform:scaleX(0);transform-origin:left;transition:transform .35s}
+.proj-card:hover::before{transform:scaleX(1)}
+.proj-card:hover .arrow{color:var(--red);transform:translate(4px,-4px)}
+.pnum{font-family:'Bebas Neue',sans-serif;font-size:52px;color:#1c1c1c;line-height:1;margin-bottom:.3rem}
+.ptitle{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:1px;color:#fff;margin-bottom:.6rem}
+.pdesc{font-size:13px;color:#555;line-height:1.65;margin-bottom:1.2rem}
+.ptags{display:flex;gap:6px;flex-wrap:wrap}
+.ptag{font-family:'Share Tech Mono',monospace;font-size:10px;color:#555;border:1px solid var(--border2);padding:3px 9px;letter-spacing:1px}
+.arrow{position:absolute;top:1.5rem;right:1.5rem;font-size:18px;color:var(--dimmer);transition:color .2s,transform .2s}
+.c-tl,.c-br{position:absolute;width:18px;height:18px}
+.c-tl{top:0;left:0;border-top:1px solid var(--red);border-left:1px solid var(--red)}
+.c-br{bottom:0;right:0;border-bottom:1px solid var(--red);border-right:1px solid var(--red)}
 
-    .moto-glow {
-      position: absolute; bottom: -20px; left: 50%; transform: translateX(-50%);
-      width: 300px; height: 30px;
-      background: var(--red);
-      filter: blur(30px); opacity: .15;
-      border-radius: 50%;
-    }
+/* ── ABOUT ── */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+.about-text p{font-size:15px;color:var(--muted);line-height:1.85;margin-bottom:1rem}
+.about-text p em{color:var(--red);font-style:normal;font-weight:600}
+.interests{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border)}
+.int-item{background:var(--bg2);padding:1.4rem;display:flex;align-items:center;gap:14px}
+.int-ico{width:38px;height:38px;background:var(--bg3);border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0}
+.int-name{font-family:'Rajdhani',sans-serif;font-size:13px;font-weight:700;letter-spacing:2px;color:#aaa;text-transform:uppercase}
+.int-sub{font-family:'Share Tech Mono',monospace;font-size:9px;color:#444;letter-spacing:2px}
 
-    .moto-wrap svg { width: 100%; display: block; }
+/* ── CONTACT ── */
+.contact-strip{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:2rem}
+.contact-cta h2{font-family:'Bebas Neue',sans-serif;font-size:42px;letter-spacing:2px;color:#fff}
+.contact-cta h2 span{color:var(--red)}
+.contact-cta p{font-size:14px;color:var(--muted);margin-top:.4rem}
+.contact-links{display:flex;gap:1rem;flex-wrap:wrap}
+.contact-link{font-family:'Share Tech Mono',monospace;font-size:11px;color:#555;text-decoration:none;border:1px solid var(--border2);padding:10px 18px;letter-spacing:2px;text-transform:uppercase;transition:color .2s,border-color .2s}
+.contact-link:hover{color:var(--red);border-color:var(--red)}
 
-    .floats {
-      position: absolute; right: -20px; top: 50%; transform: translateY(-50%);
-      display: flex; flex-direction: column; gap: 10px;
-    }
-    .float-card {
-      background: var(--bg2); border: 1px solid var(--border2);
-      border-left: 2px solid var(--red);
-      padding: 8px 14px;
-      font-family: 'Share Tech Mono', monospace;
-    }
-    .float-card .fval { font-family: 'Bebas Neue', sans-serif; font-size: 22px; color: #fff; letter-spacing: 2px; line-height: 1; }
-    .float-card .flbl { font-size: 9px; color: #555; letter-spacing: 3px; }
+/* ── FOOTER ── */
+footer{padding:1.5rem 3rem;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
+.f-logo{font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:4px;color:var(--dimmer)}
+.f-logo span{color:var(--red)}
+.f-copy{font-family:'Share Tech Mono',monospace;font-size:10px;color:#2a2a2a;letter-spacing:2px}
 
-    /* ── FADE IN ANIMATION ── */
-    .hero-left > * { animation: fadeUp .7s ease both; }
-    .hero-left > *:nth-child(1) { animation-delay: .1s; }
-    .hero-left > *:nth-child(2) { animation-delay: .25s; }
-    .hero-left > *:nth-child(3) { animation-delay: .4s; }
-    .hero-left > *:nth-child(4) { animation-delay: .55s; }
-    @keyframes fadeUp { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
-
-    /* ── SECTION BASE ── */
-    section { padding: 5rem 3rem; border-top: 1px solid var(--border); }
-
-    .sec-label {
-      font-family: 'Share Tech Mono', monospace;
-      font-size: 10px; color: var(--red);
-      letter-spacing: 5px; text-transform: uppercase; margin-bottom: .5rem;
-    }
-    .sec-title {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 44px; letter-spacing: 2px; color: #fff; margin-bottom: 2.5rem;
-    }
-
-    /* ── SKILLS ── */
-    .skills-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-      gap: 1px; background: var(--border); border: 1px solid var(--border);
-    }
-    .skill-card {
-      background: var(--bg2); padding: 1.6rem 1.3rem;
-      transition: background .2s; cursor: default;
-    }
-    .skill-card:hover { background: var(--bg3); }
-    .sk-icon { font-size: 20px; margin-bottom: 10px; display: block; }
-    .sk-name { font-family: 'Share Tech Mono', monospace; font-size: 11px; color: #aaa; letter-spacing: 1px; margin-bottom: 10px; }
-    .sk-track { height: 2px; background: #1e1e1e; }
-    .sk-bar { height: 2px; background: var(--red); position: relative; }
-    .sk-bar::after { content: ''; position: absolute; right: 0; top: -2px; width: 5px; height: 6px; background: var(--red); box-shadow: 0 0 6px var(--red); }
-
-    /* ── PROJECTS ── */
-    .projects-grid {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 1px; background: var(--border); border: 1px solid var(--border);
-    }
-    .proj-card {
-      background: var(--bg2); padding: 2.2rem;
-      position: relative; overflow: hidden; cursor: pointer;
-      transition: background .2s;
-    }
-    .proj-card:hover { background: var(--bg3); }
-    .proj-card::before {
-      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
-      background: var(--red); transform: scaleX(0); transform-origin: left; transition: transform .35s;
-    }
-    .proj-card:hover::before { transform: scaleX(1); }
-    .proj-card:hover .arrow { color: var(--red); transform: translate(4px,-4px); }
-
-    .pnum { font-family: 'Bebas Neue', sans-serif; font-size: 52px; color: #1c1c1c; line-height: 1; margin-bottom: .3rem; }
-    .ptitle { font-family: 'Bebas Neue', sans-serif; font-size: 24px; letter-spacing: 1px; color: #fff; margin-bottom: .6rem; }
-    .pdesc { font-size: 13px; color: #555; line-height: 1.65; margin-bottom: 1.2rem; }
-    .ptags { display: flex; gap: 6px; flex-wrap: wrap; }
-    .ptag { font-family: 'Share Tech Mono', monospace; font-size: 10px; color: #555; border: 1px solid var(--border2); padding: 3px 9px; letter-spacing: 1px; }
-    .arrow { position: absolute; top: 1.5rem; right: 1.5rem; font-size: 18px; color: var(--dimmer); transition: color .2s, transform .2s; }
-
-    /* corner accents */
-    .c-tl, .c-br { position: absolute; width: 18px; height: 18px; }
-    .c-tl { top: 0; left: 0; border-top: 1px solid var(--red); border-left: 1px solid var(--red); }
-    .c-br { bottom: 0; right: 0; border-bottom: 1px solid var(--red); border-right: 1px solid var(--red); }
-
-    /* ── ABOUT ── */
-    .about-grid {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
-    }
-    .about-text p { font-size: 15px; color: var(--muted); line-height: 1.85; margin-bottom: 1rem; }
-    .about-text p em { color: var(--red); font-style: normal; font-weight: 600; }
-
-    .interests { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); border: 1px solid var(--border); }
-    .int-item { background: var(--bg2); padding: 1.4rem; display: flex; align-items: center; gap: 14px; }
-    .int-ico { width: 38px; height: 38px; background: var(--bg3); border: 1px solid var(--border2); display: flex; align-items: center; justify-content: center; font-size: 17px; flex-shrink: 0; }
-    .int-name { font-family: 'Rajdhani', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 2px; color: #aaa; text-transform: uppercase; }
-    .int-sub { font-family: 'Share Tech Mono', monospace; font-size: 9px; color: #444; letter-spacing: 2px; }
-
-    /* ── CONTACT ── */
-    .contact-strip {
-      display: flex; justify-content: space-between; align-items: center;
-      flex-wrap: wrap; gap: 2rem;
-    }
-    .contact-cta h2 { font-family: 'Bebas Neue', sans-serif; font-size: 42px; letter-spacing: 2px; color: #fff; }
-    .contact-cta h2 span { color: var(--red); }
-    .contact-cta p { font-size: 14px; color: var(--muted); margin-top: .4rem; }
-    .contact-links { display: flex; gap: 1rem; flex-wrap: wrap; }
-    .contact-link {
-      font-family: 'Share Tech Mono', monospace;
-      font-size: 11px; color: #555; text-decoration: none;
-      border: 1px solid var(--border2); padding: 10px 18px;
-      letter-spacing: 2px; text-transform: uppercase;
-      transition: color .2s, border-color .2s;
-    }
-    .contact-link:hover { color: var(--red); border-color: var(--red); }
-
-    /* ── FOOTER ── */
-    footer {
-      padding: 1.5rem 3rem; border-top: 1px solid var(--border);
-      display: flex; justify-content: space-between; align-items: center;
-    }
-    .f-logo { font-family: 'Bebas Neue', sans-serif; font-size: 18px; letter-spacing: 4px; color: var(--dimmer); }
-    .f-logo span { color: var(--red); }
-    .f-copy { font-family: 'Share Tech Mono', monospace; font-size: 10px; color: #2a2a2a; letter-spacing: 2px; }
-
-    /* ── RESPONSIVE ── */
-    @media (max-width: 768px) {
-      nav { padding: 1rem 1.5rem; }
-      .nav-links { display: none; }
-      .hero { grid-template-columns: 1fr; padding: 3rem 1.5rem; min-height: auto; }
-      .hero::after { display: none; }
-      .hero-right { margin-top: 2rem; }
-      .floats { display: none; }
-      section { padding: 3rem 1.5rem; }
-      .projects-grid, .about-grid { grid-template-columns: 1fr; }
-      footer { flex-direction: column; gap: 1rem; padding: 1.5rem; text-align: center; }
-    }
-  </style>
+/* ── RESPONSIVE ── */
+@media(max-width:768px){
+  nav{padding:1rem 1.5rem}
+  .nav-links{display:none}
+  .hero{grid-template-columns:1fr;padding:3rem 1.5rem;min-height:auto}
+  .hero::after{display:none}
+  .hero-right{margin-top:2rem}
+  .floats{display:none}
+  section{padding:3rem 1.5rem}
+  .projects-grid,.about-grid{grid-template-columns:1fr}
+  footer{flex-direction:column;gap:1rem;padding:1.5rem;text-align:center}
+}
+</style>
 </head>
 <body>
 
-  <!-- NAV -->
-  <nav>
-    <div class="logo">DEV<span>_</span>PORTFOLIO</div>
-    <div class="nav-links">
-      <a href="#hero">Accueil</a>
-      <a href="#skills">Skills</a>
-      <a href="#projects">Projets</a>
-      <a href="#about">À propos</a>
-      <a href="#contact">Contact</a>
-    </div>
-    <div class="nav-status"><div class="dot"></div>DISPONIBLE</div>
-  </nav>
+<!-- NAV -->
+<nav>
+  <div class="logo">DEV<span>_</span>PORTFOLIO</div>
+  <div class="nav-links">
+    <a href="#hero">Accueil</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projets</a>
+    <a href="#about">À propos</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <div class="nav-status"><div class="dot"></div>DISPONIBLE</div>
+</nav>
 
-  <!-- HERO -->
-  <div class="hero" id="hero">
-    <div class="hero-left">
-      <div class="hero-eyebrow">Développeur Full Stack</div>
-      <h1>FULL<br><span class="red">THROT</span><br><span class="ghost">TLE.</span></h1>
-      <p class="hero-bio">Je code comme je roule — à fond, avec précision. Des interfaces qui claquent, du code qui tient la route, des projets qui laissent des traces.</p>
-      <div class="btns">
-        <a href="#projects" class="btn btn-red">Voir mes projets</a>
-        <a href="#contact" class="btn btn-outline">Me contacter</a>
+<!-- HERO -->
+<div class="hero" id="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">Développeur Full Stack</div>
+    <h1>FULL<br><span class="red">THROT</span><br><span class="ghost">TLE.</span></h1>
+    <p class="hero-bio">Je code comme je roule — à fond, avec précision. Des interfaces qui claquent, du code qui tient la route, des projets qui laissent des traces.</p>
+    <div class="btns">
+      <a href="#projects" class="btn btn-red">Voir mes projets</a>
+      <a href="#contact" class="btn btn-outline">Me contacter</a>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="moto-wrap">
+      <div class="moto-glow"></div>
+
+      <div class="panigale-frame">
+        <!-- Photo Ducati Panigale V4 — Wikimedia Commons, licence CC -->
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/2018_Ducati_Panigale_V4_S_%2843536850182%29.jpg/1280px-2018_Ducati_Panigale_V4_S_%2843536850182%29.jpg"
+          alt="Ducati Panigale V4 rouge"
+          loading="eager"
+          onerror="this.onerror=null;this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Ducati_Panigale_V4_2018.jpg/1280px-Ducati_Panigale_V4_2018.jpg'"
+        >
       </div>
-    </div>
 
-    <div class="hero-right">
-      <div class="moto-wrap">
-        <div class="moto-glow"></div>
+      <div class="moto-badge">
+        <strong>PANIGALE V4</strong>
+        214 CH · 1103 CC
+      </div>
 
-        <!-- MOTO RÉALISTE SVG -->
-        <svg viewBox="0 0 520 300" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <radialGradient id="wheelGrad" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stop-color="#2a2a2a"/>
-              <stop offset="100%" stop-color="#111"/>
-            </radialGradient>
-            <radialGradient id="tireGrad" cx="50%" cy="50%" r="50%">
-              <stop offset="70%" stop-color="#1a1a1a"/>
-              <stop offset="100%" stop-color="#0d0d0d"/>
-            </radialGradient>
-            <linearGradient id="bodyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stop-color="#1e1e1e"/>
-              <stop offset="100%" stop-color="#111"/>
-            </linearGradient>
-            <linearGradient id="tankGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" stop-color="#222"/>
-              <stop offset="100%" stop-color="#141414"/>
-            </linearGradient>
-            <linearGradient id="fairing" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stop-color="#1a1a1a"/>
-              <stop offset="50%" stop-color="#cc1111"/>
-              <stop offset="100%" stop-color="#990d0d"/>
-            </linearGradient>
-            <filter id="glow">
-              <feGaussianBlur stdDeviation="3" result="blur"/>
-              <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-            </filter>
-          </defs>
-
-          <!-- SOL / OMBRE -->
-          <ellipse cx="260" cy="278" rx="200" ry="10" fill="#000" opacity=".6"/>
-          <ellipse cx="260" cy="275" rx="180" ry="6" fill="#cc1111" opacity=".04"/>
-
-          <!-- ═══════════════ ROUE ARRIÈRE ═══════════════ -->
-          <!-- pneu -->
-          <circle cx="118" cy="222" r="58" fill="#111" stroke="#0d0d0d" stroke-width="2"/>
-          <circle cx="118" cy="222" r="54" fill="none" stroke="#1a1a1a" stroke-width="8"/>
-          <circle cx="118" cy="222" r="50" fill="none" stroke="#141414" stroke-width="2"/>
-          <!-- jante -->
-          <circle cx="118" cy="222" r="42" fill="url(#wheelGrad)" stroke="#2a2a2a" stroke-width="1.5"/>
-          <circle cx="118" cy="222" r="38" fill="none" stroke="#333" stroke-width=".5"/>
-          <!-- rayons (12) -->
-          <g stroke="#3a3a3a" stroke-width="1.5">
-            <line x1="118" y1="180" x2="118" y2="198"/>
-            <line x1="118" y1="246" x2="118" y2="264"/>
-            <line x1="76" y1="222" x2="94" y2="222"/>
-            <line x1="142" y1="222" x2="160" y2="222"/>
-            <line x1="88.3" y1="192.3" x2="100.6" y2="204.6"/>
-            <line x1="135.4" y1="239.4" x2="147.7" y2="251.7"/>
-            <line x1="147.7" y1="192.3" x2="135.4" y2="204.6"/>
-            <line x1="88.3" y1="251.7" x2="100.6" y2="239.4"/>
-            <line x1="80.8" y1="206" x2="96" y2="212"/>
-            <line x1="140" y1="232" x2="155.2" y2="238"/>
-            <line x1="155.2" y1="206" x2="140" y2="212"/>
-            <line x1="80.8" y1="238" x2="96" y2="232"/>
-          </g>
-          <!-- moyeu -->
-          <circle cx="118" cy="222" r="14" fill="#111" stroke="#444" stroke-width="1.5"/>
-          <circle cx="118" cy="222" r="8" fill="#1a1a1a" stroke="#555" stroke-width="1"/>
-          <circle cx="118" cy="222" r="3" fill="#cc1111"/>
-          <!-- disque de frein -->
-          <circle cx="118" cy="222" r="30" fill="none" stroke="#222" stroke-width="4" stroke-dasharray="10,5"/>
-
-          <!-- ═══════════════ ROUE AVANT ═══════════════ -->
-          <circle cx="400" cy="222" r="58" fill="#111" stroke="#0d0d0d" stroke-width="2"/>
-          <circle cx="400" cy="222" r="54" fill="none" stroke="#1a1a1a" stroke-width="8"/>
-          <circle cx="400" cy="222" r="50" fill="none" stroke="#141414" stroke-width="2"/>
-          <circle cx="400" cy="222" r="42" fill="url(#wheelGrad)" stroke="#2a2a2a" stroke-width="1.5"/>
-          <circle cx="400" cy="222" r="38" fill="none" stroke="#333" stroke-width=".5"/>
-          <g stroke="#3a3a3a" stroke-width="1.5">
-            <line x1="400" y1="180" x2="400" y2="198"/>
-            <line x1="400" y1="246" x2="400" y2="264"/>
-            <line x1="358" y1="222" x2="376" y2="222"/>
-            <line x1="424" y1="222" x2="442" y2="222"/>
-            <line x1="370.3" y1="192.3" x2="382.6" y2="204.6"/>
-            <line x1="417.4" y1="239.4" x2="429.7" y2="251.7"/>
-            <line x1="429.7" y1="192.3" x2="417.4" y2="204.6"/>
-            <line x1="370.3" y1="251.7" x2="382.6" y2="239.4"/>
-            <line x1="362.8" y1="206" x2="378" y2="212"/>
-            <line x1="422" y1="232" x2="437.2" y2="238"/>
-            <line x1="437.2" y1="206" x2="422" y2="212"/>
-            <line x1="362.8" y1="238" x2="378" y2="232"/>
-          </g>
-          <circle cx="400" cy="222" r="14" fill="#111" stroke="#444" stroke-width="1.5"/>
-          <circle cx="400" cy="222" r="8" fill="#1a1a1a" stroke="#555" stroke-width="1"/>
-          <circle cx="400" cy="222" r="3" fill="#cc1111"/>
-          <circle cx="400" cy="222" r="30" fill="none" stroke="#222" stroke-width="4" stroke-dasharray="10,5"/>
-
-          <!-- ═══════════════ BRAS OSCILLANT ═══════════════ -->
-          <path d="M118 220 C150 215 190 210 230 205" stroke="#252525" stroke-width="12" fill="none" stroke-linecap="round"/>
-          <path d="M118 224 C150 219 190 214 230 209" stroke="#1e1e1e" stroke-width="8" fill="none" stroke-linecap="round"/>
-          <!-- amortisseur arrière -->
-          <line x1="145" y1="210" x2="200" y2="160" stroke="#333" stroke-width="6" stroke-linecap="round"/>
-          <line x1="145" y1="210" x2="200" y2="160" stroke="#222" stroke-width="4" stroke-linecap="round"/>
-          <circle cx="145" cy="210" r="5" fill="#444"/>
-          <circle cx="200" cy="160" r="5" fill="#444"/>
-
-          <!-- ═══════════════ CADRE (FRAME) ═══════════════ -->
-          <!-- tube principal supérieur -->
-          <path d="M230 205 L240 140 L290 105 L340 100" stroke="#2e2e2e" stroke-width="10" fill="none" stroke-linecap="round"/>
-          <!-- tube diagonal -->
-          <path d="M240 140 L270 220" stroke="#2e2e2e" stroke-width="8" fill="none" stroke-linecap="round"/>
-          <!-- tube inférieur -->
-          <path d="M270 220 L230 205" stroke="#2a2a2a" stroke-width="8" fill="none" stroke-linecap="round"/>
-          <!-- tube de selle -->
-          <path d="M270 220 L255 150 L240 140" stroke="#2a2a2a" stroke-width="6" fill="none" stroke-linecap="round"/>
-          <!-- sous-cadre selle -->
-          <path d="M255 150 L290 145 L310 155" stroke="#242424" stroke-width="5" fill="none" stroke-linecap="round"/>
-
-          <!-- ═══════════════ FOURCHE AVANT ═══════════════ -->
-          <path d="M340 100 L385 175 L400 220" stroke="#303030" stroke-width="11" fill="none" stroke-linecap="round"/>
-          <path d="M335 100 L378 175 L395 222" stroke="#252525" stroke-width="7" fill="none" stroke-linecap="round"/>
-          <!-- té de fourche -->
-          <rect x="322" y="90" width="30" height="16" rx="3" fill="#2a2a2a" stroke="#444" stroke-width="1"/>
-          <!-- bras de fourche inférieur -->
-          <path d="M375 185 L400 222" stroke="#333" stroke-width="6" fill="none" stroke-linecap="round"/>
-
-          <!-- ═══════════════ MOTEUR ═══════════════ -->
-          <rect x="220" y="180" width="90" height="50" rx="4" fill="#141414" stroke="#252525" stroke-width="1.5"/>
-          <!-- ailettes de refroidissement -->
-          <g stroke="#1e1e1e" stroke-width="1">
-            <line x1="230" y1="185" x2="230" y2="225"/>
-            <line x1="240" y1="185" x2="240" y2="225"/>
-            <line x1="250" y1="185" x2="250" y2="225"/>
-            <line x1="260" y1="185" x2="260" y2="225"/>
-            <line x1="270" y1="185" x2="270" y2="225"/>
-            <line x1="280" y1="185" x2="280" y2="225"/>
-            <line x1="290" y1="185" x2="290" y2="225"/>
-            <line x1="300" y1="185" x2="300" y2="225"/>
-          </g>
-          <!-- détail moteur -->
-          <rect x="228" y="192" width="74" height="8" rx="2" fill="#1a1a1a" stroke="#2a2a2a" stroke-width=".5"/>
-          <rect x="228" y="208" width="74" height="8" rx="2" fill="#1a1a1a" stroke="#2a2a2a" stroke-width=".5"/>
-          <!-- carter -->
-          <ellipse cx="265" cy="235" rx="32" ry="8" fill="#131313" stroke="#222" stroke-width="1"/>
-
-          <!-- ═══════════════ CARÉNAGE / CARROSSERIE ═══════════════ -->
-          <!-- carénage latéral -->
-          <path d="M200 175 C210 140 240 120 280 110 L330 108 L360 120 L355 175 L290 185 Z"
-                fill="url(#bodyGrad)" stroke="#cc1111" stroke-width="1.5"/>
-          <!-- bande rouge centrale -->
-          <path d="M210 165 C220 140 248 124 282 116 L325 114 L350 124 L345 165 L285 173 Z"
-                fill="#cc1111" opacity=".15"/>
-          <path d="M215 162 L340 140" stroke="#cc1111" stroke-width="1" opacity=".6"/>
-          <path d="M215 170 L342 148" stroke="#cc1111" stroke-width=".5" opacity=".4"/>
-
-          <!-- RÉSERVOIR -->
-          <path d="M240 108 C250 85 280 75 310 75 C340 75 360 88 355 108 L240 108 Z"
-                fill="url(#tankGrad)" stroke="#cc1111" stroke-width="1.5"/>
-          <!-- reflet réservoir -->
-          <path d="M255 90 C262 82 280 79 296 82" stroke="#333" stroke-width="2" fill="none" stroke-linecap="round"/>
-          <path d="M258 93 C266 86 280 83 294 85" stroke="#444" stroke-width="1" fill="none" opacity=".5"/>
-          <!-- bouchon réservoir -->
-          <ellipse cx="295" cy="78" rx="10" ry="5" fill="#1a1a1a" stroke="#444" stroke-width="1"/>
-          <ellipse cx="295" cy="78" rx="6" ry="3" fill="#222"/>
-
-          <!-- CARÉNAGE AVANT (tête de fourche) -->
-          <path d="M330 100 C345 80 375 72 395 85 L410 110 L385 125 L355 118 Z"
-                fill="url(#fairing)" stroke="#cc1111" stroke-width="1.5"/>
-          <!-- vitre / bulle -->
-          <path d="M340 95 C352 78 372 72 388 82 L400 102 L382 112 L358 108 Z"
-                fill="#0d1a2a" stroke="#1a3a5a" stroke-width="1" opacity=".8"/>
-          <!-- reflet bulle -->
-          <path d="M348 90 C357 78 370 75 380 81" stroke="#1a4a7a" stroke-width="1.5" fill="none" opacity=".6"/>
-
-          <!-- PHARE AVANT -->
-          <ellipse cx="408" cy="118" rx="16" ry="12" fill="#111" stroke="#cc1111" stroke-width="1.5"/>
-          <ellipse cx="408" cy="118" rx="10" ry="7" fill="#cc1111" opacity=".4" filter="url(#glow)"/>
-          <ellipse cx="408" cy="118" rx="5" ry="4" fill="#ff4444" opacity=".8"/>
-          <!-- faisceau lumineux -->
-          <path d="M422 112 L500 85 L500 95 L422 124 Z" fill="#cc1111" opacity=".03"/>
-
-          <!-- SELLE / QUEUE -->
-          <path d="M255 145 C268 130 290 125 310 128 L340 132 L360 145 L350 170 L290 178 L255 168 Z"
-                fill="#0e0e0e" stroke="#333" stroke-width="1"/>
-          <!-- couture selle -->
-          <path d="M258 155 C272 145 295 142 318 145 L345 152" stroke="#222" stroke-width="1" fill="none" stroke-dasharray="6,4"/>
-          <!-- queue / feu arrière -->
-          <path d="M310 128 C330 120 355 122 360 132 L360 145 L345 148 L315 138 Z"
-                fill="#1a0000" stroke="#cc1111" stroke-width="1"/>
-          <rect x="338" y="130" width="22" height="10" rx="2" fill="#cc1111" opacity=".7"/>
-          <rect x="340" y="132" width="18" height="6" rx="1" fill="#ff2222" opacity=".9" filter="url(#glow)"/>
-
-          <!-- ═══════════════ GUIDON ═══════════════ -->
-          <rect x="318" y="75" width="5" height="26" rx="2" fill="#333"/>
-          <path d="M304 79 Q319 77 334 79" stroke="#333" stroke-width="6" fill="none" stroke-linecap="round"/>
-          <!-- rétroviseur gauche -->
-          <line x1="305" y1="80" x2="290" y2="65" stroke="#2a2a2a" stroke-width="2"/>
-          <rect x="280" y="58" width="14" height="9" rx="2" fill="#1a1a1a" stroke="#333" stroke-width="1"/>
-          <!-- poignée gauche -->
-          <rect x="298" y="76" width="8" height="10" rx="2" fill="#cc1111"/>
-          <!-- poignée droite -->
-          <rect x="332" y="76" width="8" height="10" rx="2" fill="#222" stroke="#444" stroke-width="1"/>
-
-          <!-- ═══════════════ ÉCHAPPEMENT ═══════════════ -->
-          <path d="M220 215 C180 218 155 225 128 225" stroke="#2a2a2a" stroke-width="10" fill="none" stroke-linecap="round"/>
-          <path d="M220 215 C180 218 155 225 128 225" stroke="#1a1a1a" stroke-width="7" fill="none" stroke-linecap="round"/>
-          <path d="M220 215 C180 218 155 225 128 225" stroke="#333" stroke-width="2" fill="none" stroke-linecap="round" opacity=".3"/>
-          <!-- sortie d'échappement -->
-          <ellipse cx="128" cy="225" rx="9" ry="6" fill="#111" stroke="#333" stroke-width="1.5"/>
-          <ellipse cx="128" cy="225" rx="5" ry="3" fill="#1a1a1a"/>
-          <!-- chaleur / fumée -->
-          <ellipse cx="114" cy="224" rx="7" ry="5" fill="#161616" opacity=".6"/>
-          <ellipse cx="100" cy="222" rx="9" ry="7" fill="#111" opacity=".3"/>
-          <ellipse cx="84" cy="220" rx="11" ry="8" fill="#0d0d0d" opacity=".15"/>
-
-          <!-- ═══════════════ PIED / REPOSE-PIED ═══════════════ -->
-          <line x1="240" y1="230" x2="220" y2="248" stroke="#222" stroke-width="3" stroke-linecap="round"/>
-          <line x1="220" y1="248" x2="195" y2="248" stroke="#333" stroke-width="4" stroke-linecap="round"/>
-
-          <!-- ═══════════════ DÉTAILS FINAUX ═══════════════ -->
-          <!-- numéro de course -->
-          <rect x="228" y="148" width="50" height="28" rx="2" fill="#cc1111" opacity=".12" stroke="#cc1111" stroke-width=".5"/>
-          <text x="253" y="167" text-anchor="middle" font-family="'Bebas Neue',sans-serif" font-size="18" fill="#cc1111" opacity=".8">01</text>
-          <!-- logo sur réservoir -->
-          <text x="295" y="98" text-anchor="middle" font-family="'Bebas Neue',sans-serif" font-size="12" fill="#cc1111" opacity=".6" letter-spacing="2">DEV</text>
-
-          <!-- ligne rouge latérale bas de carénage -->
-          <path d="M202 178 L355 176" stroke="#cc1111" stroke-width="2" opacity=".7"/>
-          <path d="M204 182 L353 180" stroke="#cc1111" stroke-width=".5" opacity=".3"/>
-        </svg>
-
-        <div class="floats">
-          <div class="float-card">
-            <div class="fval">3+</div>
-            <div class="flbl">ANS XP</div>
-          </div>
-          <div class="float-card">
-            <div class="fval">24</div>
-            <div class="flbl">PROJETS</div>
-          </div>
+      <div class="floats">
+        <div class="float-card">
+          <div class="fval">3+</div>
+          <div class="flbl">ANS XP</div>
+        </div>
+        <div class="float-card">
+          <div class="fval">24</div>
+          <div class="flbl">PROJETS</div>
         </div>
       </div>
     </div>
   </div>
+</div>
 
-  <!-- SKILLS -->
-  <section id="skills">
-    <div class="sec-label">// Compétences</div>
-    <div class="sec-title">ARSENAL TECH</div>
-    <div class="skills-grid">
-      <div class="skill-card"><span class="sk-icon">⚡</span><div class="sk-name">JAVASCRIPT</div><div class="sk-track"><div class="sk-bar" style="width:90%"></div></div></div>
-      <div class="skill-card"><span class="sk-icon">⚛</span><div class="sk-name">REACT / NEXT.JS</div><div class="sk-track"><div class="sk-bar" style="width:85%"></div></div></div>
-      <div class="skill-card"><span class="sk-icon">🟢</span><div class="sk-name">NODE.JS</div><div class="sk-track"><div class="sk-bar" style="width:78%"></div></div></div>
-      <div class="skill-card"><span class="sk-icon">🐍</span><div class="sk-name">PYTHON</div><div class="sk-track"><div class="sk-bar" style="width:70%"></div></div></div>
-      <div class="skill-card"><span class="sk-icon">🐳</span><div class="sk-name">DOCKER / CI-CD</div><div class="sk-track"><div class="sk-bar" style="width:65%"></div></div></div>
-      <div class="skill-card"><span class="sk-icon">🎮</span><div class="sk-name">GAME DEV</div><div class="sk-track"><div class="sk-bar" style="width:55%"></div></div></div>
+<!-- SKILLS -->
+<section id="skills">
+  <div class="sec-label">// Compétences</div>
+  <div class="sec-title">ARSENAL TECH</div>
+  <div class="skills-grid">
+    <div class="skill-card"><span class="sk-icon">⚡</span><div class="sk-name">JAVASCRIPT</div><div class="sk-track"><div class="sk-bar" style="width:90%"></div></div></div>
+    <div class="skill-card"><span class="sk-icon">⚛</span><div class="sk-name">REACT / NEXT.JS</div><div class="sk-track"><div class="sk-bar" style="width:85%"></div></div></div>
+    <div class="skill-card"><span class="sk-icon">🟢</span><div class="sk-name">NODE.JS</div><div class="sk-track"><div class="sk-bar" style="width:78%"></div></div></div>
+    <div class="skill-card"><span class="sk-icon">🐍</span><div class="sk-name">PYTHON</div><div class="sk-track"><div class="sk-bar" style="width:70%"></div></div></div>
+    <div class="skill-card"><span class="sk-icon">🐳</span><div class="sk-name">DOCKER / CI-CD</div><div class="sk-track"><div class="sk-bar" style="width:65%"></div></div></div>
+    <div class="skill-card"><span class="sk-icon">🎮</span><div class="sk-name">GAME DEV</div><div class="sk-track"><div class="sk-bar" style="width:55%"></div></div></div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="sec-label">// Réalisations</div>
+  <div class="sec-title">PROJETS</div>
+  <div class="projects-grid">
+    <div class="proj-card">
+      <div class="c-tl"></div>
+      <div class="pnum">01</div>
+      <div class="arrow">↗</div>
+      <div class="ptitle">MOTO TRACKER</div>
+      <div class="pdesc">App de suivi d'entretien moto avec géoloc des itinéraires et stats de conduite en temps réel.</div>
+      <div class="ptags"><span class="ptag">React Native</span><span class="ptag">Node.js</span><span class="ptag">MongoDB</span></div>
     </div>
-  </section>
-
-  <!-- PROJECTS -->
-  <section id="projects">
-    <div class="sec-label">// Réalisations</div>
-    <div class="sec-title">PROJETS</div>
-    <div class="projects-grid">
-      <div class="proj-card">
-        <div class="c-tl"></div>
-        <div class="pnum">01</div>
-        <div class="arrow">↗</div>
-        <div class="ptitle">MOTO TRACKER</div>
-        <div class="pdesc">App de suivi d'entretien moto avec géoloc des itinéraires et stats de conduite en temps réel.</div>
-        <div class="ptags"><span class="ptag">React Native</span><span class="ptag">Node.js</span><span class="ptag">MongoDB</span></div>
-      </div>
-      <div class="proj-card">
-        <div class="pnum">02</div>
-        <div class="arrow">↗</div>
-        <div class="ptitle">GAME DASHBOARD</div>
-        <div class="pdesc">Tableau de bord de stats gaming cross-plateforme — Steam, PSN, Xbox agrégés en temps réel.</div>
-        <div class="ptags"><span class="ptag">Next.js</span><span class="ptag">API REST</span><span class="ptag">Redis</span></div>
-      </div>
-      <div class="proj-card">
-        <div class="pnum">03</div>
-        <div class="arrow">↗</div>
-        <div class="ptitle">RACER AI</div>
-        <div class="pdesc">Prototype de jeu de course avec IA adversaire entraînée par reinforcement learning.</div>
-        <div class="ptags"><span class="ptag">Python</span><span class="ptag">PyTorch</span><span class="ptag">Unity</span></div>
-      </div>
-      <div class="proj-card">
-        <div class="c-br"></div>
-        <div class="pnum">04</div>
-        <div class="arrow">↗</div>
-        <div class="ptitle">PORTFOLIO V2</div>
-        <div class="pdesc">Ce portfolio. Conçu de zéro, dark theme, animations CSS, zéro framework UI générique.</div>
-        <div class="ptags"><span class="ptag">HTML/CSS</span><span class="ptag">Vanilla JS</span><span class="ptag">SVG</span></div>
-      </div>
+    <div class="proj-card">
+      <div class="pnum">02</div>
+      <div class="arrow">↗</div>
+      <div class="ptitle">GAME DASHBOARD</div>
+      <div class="pdesc">Tableau de bord de stats gaming cross-plateforme — Steam, PSN, Xbox agrégés en temps réel.</div>
+      <div class="ptags"><span class="ptag">Next.js</span><span class="ptag">API REST</span><span class="ptag">Redis</span></div>
     </div>
-  </section>
-
-  <!-- ABOUT -->
-  <section id="about">
-    <div class="about-grid">
-      <div class="about-text">
-        <div class="sec-label">// À propos</div>
-        <div class="sec-title">DNA</div>
-        <p>Développeur passionné qui carbure au <em>code propre</em> et aux projets qui ont du caractère. Quand je ne debug pas, je suis sur deux roues ou à esquiver des balles.</p>
-        <p>Je crois que le bon code, comme une bonne moto, doit être <em>fiable, rapide</em> et beau à regarder tourner. Chaque projet est un roadtrip — on prépare bien, on part confiant, on improvise si besoin.</p>
-      </div>
-      <div class="interests">
-        <div class="int-item"><div class="int-ico">🏍️</div><div><div class="int-name">MOTO</div><div class="int-sub">ROADTRIP & CIRCUIT</div></div></div>
-        <div class="int-item"><div class="int-ico">🎮</div><div><div class="int-name">GAMING</div><div class="int-sub">FPS & OPEN WORLD</div></div></div>
-        <div class="int-item"><div class="int-ico">💻</div><div><div class="int-name">DEV</div><div class="int-sub">FULL STACK & IA</div></div></div>
-        <div class="int-item"><div class="int-ico">🔧</div><div><div class="int-name">MÉCANIQUE</div><div class="int-sub">CUSTOM BUILD</div></div></div>
-      </div>
+    <div class="proj-card">
+      <div class="pnum">03</div>
+      <div class="arrow">↗</div>
+      <div class="ptitle">RACER AI</div>
+      <div class="pdesc">Prototype de jeu de course avec IA adversaire entraînée par reinforcement learning.</div>
+      <div class="ptags"><span class="ptag">Python</span><span class="ptag">PyTorch</span><span class="ptag">Unity</span></div>
     </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section id="contact">
-    <div class="contact-strip">
-      <div class="contact-cta">
-        <h2>PRÊT À<br><span>ROULER</span> ?</h2>
-        <p>Un projet en tête ? On en parle.</p>
-      </div>
-      <div class="contact-links">
-        <a href="https://github.com" class="contact-link">GitHub</a>
-        <a href="https://linkedin.com" class="contact-link">LinkedIn</a>
-        <a href="mailto:hello@example.com" class="contact-link">Email</a>
-      </div>
+    <div class="proj-card">
+      <div class="c-br"></div>
+      <div class="pnum">04</div>
+      <div class="arrow">↗</div>
+      <div class="ptitle">PORTFOLIO V2</div>
+      <div class="pdesc">Ce portfolio. Conçu de zéro, dark theme, animations CSS, zéro framework UI générique.</div>
+      <div class="ptags"><span class="ptag">HTML/CSS</span><span class="ptag">Vanilla JS</span><span class="ptag">SVG</span></div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- FOOTER -->
-  <footer>
-    <div class="f-logo">DEV<span>_</span>PORT</div>
-    <div class="f-copy">© 2025 — FULL THROTTLE</div>
-  </footer>
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-grid">
+    <div class="about-text">
+      <div class="sec-label">// À propos</div>
+      <div class="sec-title">DNA</div>
+      <p>Développeur passionné qui carbure au <em>code propre</em> et aux projets qui ont du caractère. Quand je ne debug pas, je suis sur deux roues ou à esquiver des balles.</p>
+      <p>Je crois que le bon code, comme une bonne moto, doit être <em>fiable, rapide</em> et beau à regarder tourner. Chaque projet est un roadtrip — on prépare bien, on part confiant, on improvise si besoin.</p>
+    </div>
+    <div class="interests">
+      <div class="int-item"><div class="int-ico">🏍️</div><div><div class="int-name">MOTO</div><div class="int-sub">ROADTRIP & CIRCUIT</div></div></div>
+      <div class="int-item"><div class="int-ico">🎮</div><div><div class="int-name">GAMING</div><div class="int-sub">FPS & OPEN WORLD</div></div></div>
+      <div class="int-item"><div class="int-ico">💻</div><div><div class="int-name">DEV</div><div class="int-sub">FULL STACK & IA</div></div></div>
+      <div class="int-item"><div class="int-ico">🔧</div><div><div class="int-name">MÉCANIQUE</div><div class="int-sub">CUSTOM BUILD</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-strip">
+    <div class="contact-cta">
+      <h2>PRÊT À<br><span>ROULER</span> ?</h2>
+      <p>Un projet en tête ? On en parle.</p>
+    </div>
+    <div class="contact-links">
+      <a href="https://github.com" class="contact-link">GitHub</a>
+      <a href="https://linkedin.com" class="contact-link">LinkedIn</a>
+      <a href="mailto:hello@example.com" class="contact-link">Email</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="f-logo">DEV<span>_</span>PORT</div>
+  <div class="f-copy">© 2025 — FULL THROTTLE</div>
+</footer>
 
 </body>
 </html>

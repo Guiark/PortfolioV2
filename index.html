@@ -12,7 +12,7 @@
   --red:#cc1111;--red-bright:#e01515;
   --bg:#0a0a0a;--bg2:#0d0d0d;--bg3:#111;
   --border:#1a1a1a;--border2:#222;
-  --text:#e8e8e8;--muted:#666;--dim:#444;--dimmer:#333;
+  --text:#e8e8e8;--muted:#aaa;--dim:#888;--dimmer:#666;
 }
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--text);font-family:'Rajdhani',sans-serif;overflow-x:hidden}
@@ -105,9 +105,9 @@ section{padding:5rem 3rem;border-top:1px solid var(--border)}
 .proj-card:hover .arrow{color:var(--red);transform:translate(4px,-4px)}
 .pnum{font-family:'Bebas Neue',sans-serif;font-size:52px;color:#1c1c1c;line-height:1;margin-bottom:.3rem}
 .ptitle{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:1px;color:#fff;margin-bottom:.6rem}
-.pdesc{font-size:13px;color:#555;line-height:1.65;margin-bottom:1.2rem}
+.pdesc{font-size:13px;color:#999;line-height:1.65;margin-bottom:1.2rem}
 .ptags{display:flex;gap:6px;flex-wrap:wrap}
-.ptag{font-family:'Share Tech Mono',monospace;font-size:10px;color:#555;border:1px solid var(--border2);padding:3px 9px;letter-spacing:1px}
+.ptag{font-family:'Share Tech Mono',monospace;font-size:10px;color:#888;border:1px solid var(--border2);padding:3px 9px;letter-spacing:1px}
 .arrow{position:absolute;top:1.5rem;right:1.5rem;font-size:18px;color:var(--dimmer);transition:color .2s,transform .2s}
 .c-tl,.c-br{position:absolute;width:18px;height:18px}
 .c-tl{top:0;left:0;border-top:1px solid var(--red);border-left:1px solid var(--red)}
@@ -125,7 +125,7 @@ section{padding:5rem 3rem;border-top:1px solid var(--border)}
 .tl-date{font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--red);letter-spacing:3px;margin-bottom:4px}
 .tl-title{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:1px;color:#fff;margin-bottom:4px}
 .tl-school{font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--dim);letter-spacing:2px;margin-bottom:6px}
-.tl-desc{font-size:13px;color:#4a4a4a;line-height:1.65}
+.tl-desc{font-size:13px;color:#999;line-height:1.65}
 
 /* CV DOWNLOAD CARD */
 .cv-block{display:flex;flex-direction:column;gap:1.5rem}
@@ -133,24 +133,24 @@ section{padding:5rem 3rem;border-top:1px solid var(--border)}
 .cv-card::after{content:'CV';position:absolute;right:-10px;bottom:-18px;font-family:'Bebas Neue',sans-serif;font-size:100px;color:#151515;letter-spacing:4px;line-height:1;pointer-events:none;user-select:none}
 .cv-card-label{font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--red);letter-spacing:4px;margin-bottom:.8rem}
 .cv-card-title{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:2px;color:#fff;margin-bottom:.4rem}
-.cv-card-sub{font-size:13px;color:#4a4a4a;line-height:1.6;margin-bottom:1.6rem}
+.cv-card-sub{font-size:13px;color:#999;line-height:1.6;margin-bottom:1.6rem}
 .cv-meta{display:flex;gap:1.5rem;margin-bottom:1.8rem}
 .cv-meta-item{display:flex;flex-direction:column;gap:2px}
 .cv-meta-val{font-family:'Bebas Neue',sans-serif;font-size:18px;color:#fff;letter-spacing:1px}
-.cv-meta-lbl{font-family:'Share Tech Mono',monospace;font-size:9px;color:#444;letter-spacing:2px}
+.cv-meta-lbl{font-family:'Share Tech Mono',monospace;font-size:9px;color:#888;letter-spacing:2px}
 .cv-divider{height:1px;background:var(--border2);margin-bottom:1.8rem}
 .btn-cv{display:inline-flex;align-items:center;gap:12px;font-family:'Rajdhani',sans-serif;font-size:13px;font-weight:700;letter-spacing:3px;text-transform:uppercase;padding:14px 28px;background:var(--red);color:#fff;text-decoration:none;clip-path:polygon(0 0,calc(100% - 10px) 0,100% 10px,100% 100%,10px 100%,0 calc(100% - 10px));transition:all .2s;position:relative;z-index:1}
 .btn-cv:hover{background:var(--red-bright);transform:translateY(-2px)}
 .btn-cv svg{width:14px;height:14px;fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
-.cv-hint{font-family:'Share Tech Mono',monospace;font-size:9px;color:#333;letter-spacing:2px;margin-top:.8rem}
+.cv-hint{font-family:'Share Tech Mono',monospace;font-size:9px;color:#666;letter-spacing:2px;margin-top:.8rem}
 
 /* CERTIFS */
 .certif-row{display:flex;flex-direction:column;gap:8px}
 .certif-item{display:flex;align-items:center;gap:12px;padding:10px 14px;background:var(--bg2);border:1px solid var(--border);border-left:2px solid transparent;transition:border-color .2s}
 .certif-item:hover{border-left-color:var(--red)}
 .certif-ico{font-size:14px;flex-shrink:0}
-.certif-name{font-family:'Share Tech Mono',monospace;font-size:10px;color:#666;letter-spacing:2px;flex:1}
-.certif-year{font-family:'Bebas Neue',sans-serif;font-size:16px;color:#333;letter-spacing:1px}
+.certif-name{font-family:'Share Tech Mono',monospace;font-size:10px;color:#999;letter-spacing:2px;flex:1}
+.certif-year{font-family:'Bebas Neue',sans-serif;font-size:16px;color:#777;letter-spacing:1px}
 
 /* ======================== */
 /* VEILLE INFORMATIQUE      */
@@ -167,17 +167,17 @@ section{padding:5rem 3rem;border-top:1px solid var(--border)}
 .v-category::after{content:'';flex:1;height:1px;background:var(--border2)}
 .v-icon{font-size:26px;margin-bottom:.8rem;display:block}
 .v-title{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:1px;color:#fff;margin-bottom:.5rem;line-height:1.1}
-.v-desc{font-size:12px;color:#4a4a4a;line-height:1.7;margin-bottom:1.2rem}
+.v-desc{font-size:12px;color:#999;line-height:1.7;margin-bottom:1.2rem}
 .v-tags{display:flex;gap:6px;flex-wrap:wrap}
-.v-tag{font-family:'Share Tech Mono',monospace;font-size:9px;color:#555;border:1px solid var(--border2);padding:3px 8px;letter-spacing:1px}
+.v-tag{font-family:'Share Tech Mono',monospace;font-size:9px;color:#888;border:1px solid var(--border2);padding:3px 8px;letter-spacing:1px}
 
 /* SOURCES DE VEILLE */
 .sources-row{display:flex;gap:1px;background:var(--border);border:1px solid var(--border)}
 .source-item{flex:1;background:var(--bg2);padding:1.2rem 1.4rem;display:flex;align-items:center;gap:10px;transition:background .2s;cursor:default}
 .source-item:hover{background:var(--bg3)}
 .src-ico{font-size:16px;flex-shrink:0}
-.src-name{font-family:'Share Tech Mono',monospace;font-size:10px;color:#555;letter-spacing:2px;line-height:1.4}
-.src-type{font-size:9px;color:#333;letter-spacing:1px}
+.src-name{font-family:'Share Tech Mono',monospace;font-size:10px;color:#999;letter-spacing:2px;line-height:1.4}
+.src-type{font-size:9px;color:#666;letter-spacing:1px}
 
 /* ABOUT */
 .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
@@ -187,7 +187,7 @@ section{padding:5rem 3rem;border-top:1px solid var(--border)}
 .int-item{background:var(--bg2);padding:1.4rem;display:flex;align-items:center;gap:14px}
 .int-ico{width:38px;height:38px;background:var(--bg3);border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0}
 .int-name{font-family:'Rajdhani',sans-serif;font-size:13px;font-weight:700;letter-spacing:2px;color:#aaa;text-transform:uppercase}
-.int-sub{font-family:'Share Tech Mono',monospace;font-size:9px;color:#444;letter-spacing:2px}
+.int-sub{font-family:'Share Tech Mono',monospace;font-size:9px;color:#777;letter-spacing:2px}
 
 /* CONTACT */
 .contact-strip{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:2rem}
@@ -195,14 +195,14 @@ section{padding:5rem 3rem;border-top:1px solid var(--border)}
 .contact-cta h2 span{color:var(--red)}
 .contact-cta p{font-size:14px;color:var(--muted);margin-top:.4rem}
 .contact-links{display:flex;gap:1rem;flex-wrap:wrap}
-.contact-link{font-family:'Share Tech Mono',monospace;font-size:11px;color:#555;text-decoration:none;border:1px solid var(--border2);padding:10px 18px;letter-spacing:2px;text-transform:uppercase;transition:color .2s,border-color .2s}
+.contact-link{font-family:'Share Tech Mono',monospace;font-size:11px;color:#888;text-decoration:none;border:1px solid var(--border2);padding:10px 18px;letter-spacing:2px;text-transform:uppercase;transition:color .2s,border-color .2s}
 .contact-link:hover{color:var(--red);border-color:var(--red)}
 
 /* FOOTER */
 footer{padding:1.5rem 3rem;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
 .f-logo{font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:4px;color:var(--dimmer)}
 .f-logo span{color:var(--red)}
-.f-copy{font-family:'Share Tech Mono',monospace;font-size:10px;color:#2a2a2a;letter-spacing:2px}
+.f-copy{font-family:'Share Tech Mono',monospace;font-size:10px;color:#555;letter-spacing:2px}
 
 /* RESPONSIVE */
 @media(max-width:900px){
@@ -272,10 +272,11 @@ footer{padding:1.5rem 3rem;border-top:1px solid var(--border);display:flex;justi
     <div class="moto-wrap">
       <div class="moto-glow"></div>
       <div class="panigale-frame">
-        <img src="dev.png" alt="Ducati Panigale V4 rouge" loading="eager">
+        <img src="panigale.png" alt="Ducati Panigale V4 rouge" loading="eager">
       </div>
       <div class="moto-badge">
-        
+        <strong>PANIGALE V4</strong>
+        214 CH · 1103 CC
       </div>
       <div class="floats">
         <div class="float-card">
@@ -283,7 +284,7 @@ footer{padding:1.5rem 3rem;border-top:1px solid var(--border);display:flex;justi
           <div class="flbl">ANS XP</div>
         </div>
         <div class="float-card">
-          <div class="fval">3</div>
+          <div class="fval">5</div>
           <div class="flbl">PROJETS</div>
         </div>
       </div>
@@ -299,8 +300,10 @@ footer{padding:1.5rem 3rem;border-top:1px solid var(--border);display:flex;justi
   <div class="skills-grid">
     <div class="skill-card"><span class="sk-icon">⚡</span><div class="sk-name">JAVASCRIPT</div><div class="sk-track"><div class="sk-bar" style="width:90%"></div></div></div>
     <div class="skill-card"><span class="sk-icon">⚛</span><div class="sk-name">REACT / NEXT.JS</div><div class="sk-track"><div class="sk-bar" style="width:85%"></div></div></div>
+    <div class="skill-card"><span class="sk-icon">🟢</span><div class="sk-name">NODE.JS</div><div class="sk-track"><div class="sk-bar" style="width:78%"></div></div></div>
     <div class="skill-card"><span class="sk-icon">🐍</span><div class="sk-name">PYTHON</div><div class="sk-track"><div class="sk-bar" style="width:70%"></div></div></div>
     <div class="skill-card"><span class="sk-icon">🐳</span><div class="sk-name">DOCKER / CI-CD</div><div class="sk-track"><div class="sk-bar" style="width:65%"></div></div></div>
+    <div class="skill-card"><span class="sk-icon">🎮</span><div class="sk-name">GAME DEV</div><div class="sk-track"><div class="sk-bar" style="width:55%"></div></div></div>
     <div class="skill-card"><span class="sk-icon">🌐</span><div class="sk-name">HTML</div><div class="sk-track"><div class="sk-bar" style="width:85%"></div></div></div>
     <div class="skill-card"><span class="sk-icon">🎨</span><div class="sk-name">CSS</div><div class="sk-track"><div class="sk-bar" style="width:85%"></div></div></div>
     <div class="skill-card"><span class="sk-icon">🐘</span><div class="sk-name">PHP</div><div class="sk-track"><div class="sk-bar" style="width:70%"></div></div></div>
@@ -317,7 +320,7 @@ footer{padding:1.5rem 3rem;border-top:1px solid var(--border);display:flex;justi
       <div class="c-tl"></div>
       <div class="pnum">01</div>
       <div class="arrow">↗</div>
-      <div class="ptitle">Créateur de CV</div>
+      <div class="ptitle">Createur de CV</div>
       <div class="pdesc">Application qui permet à un utilisateur de créer un portfolio et un CV.</div>
       <div class="ptags"><span class="ptag">Java</span><span class="ptag">HTML</span><span class="ptag">CSS</span></div>
     </div>
@@ -354,22 +357,22 @@ footer{padding:1.5rem 3rem;border-top:1px solid var(--border);display:flex;justi
         <div class="tl-item">
           <div class="tl-date">2024 — EN COURS</div>
           <div class="tl-title">BTS SIO — Option SLAM</div>
-          <div class="tl-school">Caensup Saint-Ursule· Caen</div>
+          <div class="tl-school">Lycée [Votre établissement] · Caen</div>
           <div class="tl-desc">Solutions Logicielles et Applications Métiers. Développement d'applications web et mobiles, gestion de bases de données, architecture logicielle.</div>
         </div>
 
         <div class="tl-item">
-          <div class="tl-date">2022 — 2024</div>
-          <div class="tl-title">Baccalauréat Pro Logistique</div>
-          <div class="tl-school">Lycée Saint-Ursule· Caen</div>
-          <div class="tl-desc">l'activité qui a pour objet de gérer les flux physiques, et les données s'y rapportant</div>
+          <div class="tl-date">2023 — 2024</div>
+          <div class="tl-title">Baccalauréat NSI</div>
+          <div class="tl-school">Lycée [Votre établissement] · Normandie</div>
+          <div class="tl-desc">Numérique et Sciences Informatiques. Algorithmique, programmation Python, bases de données, réseaux.</div>
         </div>
 
         <div class="tl-item">
-          <div class="tl-date">2020 — 2022</div>
-          <div class="tl-title">Baccalauréat STMG</div>
-          <div class="tl-school">Lycée Saint-Ursule· Caen<</div>
-          <div class="tl-desc">Sciences et Technologies du Management et de la Gestion</div>
+          <div class="tl-date">2022 — 2023</div>
+          <div class="tl-title">Premiers projets perso</div>
+          <div class="tl-school">Autodidacte</div>
+          <div class="tl-desc">Développement du goût pour le code. Premiers scripts Python, découverte de HTML/CSS, création d'un bot Discord.</div>
         </div>
 
       </div>
@@ -397,10 +400,11 @@ footer{padding:1.5rem 3rem;border-top:1px solid var(--border);display:flex;justi
           </div>
         </div>
         <div class="cv-divider"></div>
-        <a href="CV.pdf" download="CV_Guillaume_Lenormand_Destors.pdf" class="btn-cv">
+        <a href="cv.pdf" download="CV_Guillaume_Lenormand_Destors.pdf" class="btn-cv">
           <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
           Télécharger le CV
         </a>
+        <div class="cv-hint">// REMPLACER cv.pdf PAR LE VRAI FICHIER</div>
       </div>
 
       <div class="certif-row">
@@ -542,12 +546,14 @@ footer{padding:1.5rem 3rem;border-top:1px solid var(--border);display:flex;justi
     <div class="about-text">
       <div class="sec-label">// À propos</div>
       <div class="sec-title">DNA</div>
-      <p>J’aborde le développement avec la même intensité que la route : un mélange de performance brute et de précision chirurgicale. Je conçois des interfaces à fort impact visuel et des architectures logicielles robustes, pensées pour durer et marquer les esprits.</p>
+      <p>Développeur passionné qui carbure au <em>code propre</em> et aux projets qui ont du caractère. Quand je ne debug pas, je suis sur deux roues ou à esquiver des balles.</p>
+      <p>Je crois que le bon code, comme une bonne moto, doit être <em>fiable, rapide</em> et beau à regarder tourner. Chaque projet est un roadtrip — on prépare bien, on part confiant, on improvise si besoin.</p>
     </div>
     <div class="interests">
       <div class="int-item"><div class="int-ico">🏍️</div><div><div class="int-name">MOTO</div><div class="int-sub">ROADTRIP & CIRCUIT</div></div></div>
       <div class="int-item"><div class="int-ico">🎮</div><div><div class="int-name">GAMING</div><div class="int-sub">FPS & OPEN WORLD</div></div></div>
       <div class="int-item"><div class="int-ico">💻</div><div><div class="int-name">DEV</div><div class="int-sub">FULL STACK & IA</div></div></div>
+      <div class="int-item"><div class="int-ico">🔧</div><div><div class="int-name">MÉCANIQUE</div><div class="int-sub">CUSTOM BUILD</div></div></div>
     </div>
   </div>
 </section>
@@ -556,12 +562,13 @@ footer{padding:1.5rem 3rem;border-top:1px solid var(--border);display:flex;justi
 <section id="contact">
   <div class="contact-strip">
     <div class="contact-cta">
-      <h2>Me <br><span>Contacter</span> ?</h2>
+      <h2>PRÊT À<br><span>ROULER</span> ?</h2>
+      <p>Un projet en tête ? On en parle.</p>
     </div>
     <div class="contact-links">
-      <a href="https://github.com/Guiark" class="contact-link">GitHub</a>
-      <a href="https://www.linkedin.com/in/guillaume-lenormand-destors-3a443a366/" class="contact-link">LinkedIn</a>
-      <a href="mailto:lenormand.guil@gmail.com" class="contact-link">Email</a>
+      <a href="https://github.com" class="contact-link">GitHub</a>
+      <a href="https://linkedin.com" class="contact-link">LinkedIn</a>
+      <a href="mailto:hello@example.com" class="contact-link">Email</a>
     </div>
   </div>
 </section>
@@ -569,7 +576,7 @@ footer{padding:1.5rem 3rem;border-top:1px solid var(--border);display:flex;justi
 <!-- FOOTER -->
 <footer>
   <div class="f-logo">DEV<span>_</span>PORT</div>
-  <div class="f-copy">© 2025 — No Copyright</div>
+  <div class="f-copy">© 2025 — FULL THROTTLE</div>
 </footer>
 
 </body>
